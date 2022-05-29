@@ -1,13 +1,6 @@
 (async function() {
 
     const ws = await connectToServer();  
-    // adding function for creating a text input at a specific place (x,y coordinates)
-
-    // window.addEventListener("unload", function () {
-    //     if(ws.readyState == WebSocket.OPEN){
-    //         ws.close();
-    //     }
-    // });
 
     document.body.onclick = (evt) => {
         const inputX = evt.clientX;
