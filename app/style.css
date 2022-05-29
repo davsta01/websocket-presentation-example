@@ -1,0 +1,29 @@
+body {
+    height: 100vh;
+    margin: 0;
+    background-color: aliceblue;
+    overflow: hidden;
+    cursor: none;
+}
+label{
+    display: inline;
+}
+#userCounter {
+    display: inline;
+}
+
+p {
+    display: block;
+    margin-top: -8px;
+}
+
+input{
+    margin-top: -12px;
+    background-color: transparent;
+
+}
+.cursor {
+    width: 24px;
+    transition: all ease;
+    display:block;
+}
