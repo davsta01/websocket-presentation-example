@@ -1,7 +1,14 @@
-"
-# websockets-cursor-sharing
+# Cursor-Chat (for WebSocket presentation)
 
-# How it's built
+Used this tutorial as the base:
+https://ably.com/blog/web-app-websockets-nodejs
+
+Implemented additional functionality:
+* Possibility to leave a message: Click on the page, enter some text and press 'Enter' (text will be in the same color as User/Cursor)
+* New users receive/see all messages that have been entered before during an ongoing session
+
+
+# How it's built (based on the tutorial)
 
 * /app is the browser application
 * /api is a node.js web sockets server
@@ -11,16 +18,10 @@
 * The server adds the client's `id` and other metadata
 * The enhanced message is sent to all the clients.
 
-# What's in here?
 
-This repository contains two demos which share cursor positions over WebSockets. One using WS in the `main` branch and one using SockJS in the `SockJS` branch.
-
-# Running this sample
-
-This demo includes two applications, a web app, that we serve through Snowpack, and a Node.js webserver. The NPM start task will spin up both the API and the webserver.
+# Running
 
 ```bash
 > npm install
 > npm run start
 ```
-"

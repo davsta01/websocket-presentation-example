@@ -3,6 +3,7 @@ const WebSocket = require('ws');
 const wss = new WebSocket.Server({ port: 7071 });
 const clients = new Map();
 
+const allMessagesArray = [];
 
 wss.on('connection', (ws) => {
     const id = uuidv4();
@@ -10,16 +11,16 @@ wss.on('connection', (ws) => {
     const metadata = { id, color };
 
     clients.set(ws, metadata);
+    allMessagesArray.forEach(message => ws.send(JSON.stringify(message)));
 
     ws.on('message', (messageAsString) => {
       const message = JSON.parse(messageAsString);
       const metadata = clients.get(ws);
 
-      var clientCount = clients.size;
-
       message.sender = metadata.id;
       message.color = metadata.color;
-      message.clientCount = clientCount;
+      
+      allMessagesArray.push(message);
 
       [...clients.keys()].forEach((client) => {
         client.send(JSON.stringify(message));
@@ -27,9 +28,11 @@ wss.on('connection', (ws) => {
     });  
 });
 
-wss.on("close", () => {
+wss.on('close', (ws) => {
   clients.delete(ws);
+  console.log("user disconnected");
 });
+
 
 function uuidv4() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {

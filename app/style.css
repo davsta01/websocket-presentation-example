@@ -5,12 +5,6 @@ body {
     overflow: hidden;
     cursor: none;
 }
-label{
-    display: inline;
-}
-#userCounter {
-    display: inline;
-}
 
 p {
     display: block;
@@ -20,10 +14,10 @@ p {
 input{
     margin-top: -12px;
     background-color: transparent;
-
 }
 .cursor {
     width: 24px;
     transition: all ease;
     display:block;
+    position: absolute;
 }
